@@ -1,0 +1,1 @@
+{"id":"pdw-candidate-005","output":"## 诊断\n\n- CTA `ok` 不是具体动作，也像未本地化占位文案。\n- 这是典型的按钮即动作问题：昵称是身份创建的一部分，按钮应该说明点击后会保存昵称或进入主流程。\n\n## 改写\n\n### 版本 A\n> 给自己取个昵称\n\n按钮：\n> 保存昵称\n\n### 版本 B\n> 先取个昵称吧\n\n按钮：\n> 开始捏咔","human_score":2,"review_notes":"Example only. This output should pass include/exclude checks."}

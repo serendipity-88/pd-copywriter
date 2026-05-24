@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PD Copywriter Golden Eval Case",
+  "type": "object",
+  "required": [
+    "id",
+    "mode",
+    "priority",
+    "source_type",
+    "source",
+    "product",
+    "platform",
+    "copy_type",
+    "carrier",
+    "scenario",
+    "prompt",
+    "original_copy",
+    "context",
+    "expected_findings",
+    "must_include",
+    "must_not_include",
+    "acceptable_rewrite_traits",
+    "risk_tags",
+    "confidence"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "mode": { "enum": ["diagnosis", "rewrite", "generation", "page"] },
+    "priority": { "enum": ["P0", "P1", "P2"] },
+    "source_type": { "enum": ["design-system-derived", "article-derived", "cmgui-derived", "synthetic"] },
+    "source": { "type": "string" },
+    "product": { "type": "string" },
+    "platform": { "type": "string" },
+    "copy_type": { "enum": ["UI", "MKT", "EXP", "MIXED"] },
+    "carrier": { "type": "string" },
+    "scenario": { "type": "string" },
+    "prompt": { "type": "string" },
+    "original_copy": { "type": "string" },
+    "context": { "type": "string" },
+    "expected_findings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "must_include": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "must_not_include": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "acceptable_rewrite_traits": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "risk_tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "enum": ["high", "medium", "low"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
