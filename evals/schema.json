@@ -27,7 +27,7 @@
     "id": { "type": "string" },
     "mode": { "enum": ["diagnosis", "rewrite", "generation", "page"] },
     "priority": { "enum": ["P0", "P1", "P2"] },
-    "source_type": { "enum": ["design-system-derived", "article-derived", "cmgui-derived", "synthetic"] },
+    "source_type": { "enum": ["design-system-derived", "article-derived", "cmgui-derived", "synthetic", "case-derived"] },
     "source": { "type": "string" },
     "product": { "type": "string" },
     "platform": { "type": "string" },

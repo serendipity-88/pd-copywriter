@@ -55,6 +55,7 @@ Create subdirectories only when they contain real cases. The list above is a roa
 - [Pendo 清单笔记：功能介绍文案过载且语气不统一](ui/pendo-notes.md)
 - [Bose 音乐我的页：设置项标签像系统字段而不是用户任务](ui/bose-settings.md)
 - [捏咔昵称弹窗：CTA 写 OK 让操作意图缺失](ui/nieka-nickname-dialog.md)
+- [TapNow CTA：单个按钮请求也应补全高价值相邻文案位](ui/tapnow-adjacent-copy.md)
 
 ## What Makes A Good Case
 
