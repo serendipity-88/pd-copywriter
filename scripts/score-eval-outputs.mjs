@@ -62,6 +62,15 @@ function rewriteRegion(output) {
     "## Rewrites",
     "### 改写",
     "### Rewrite",
+    "\n改写",
+    "\n建议改写",
+    "\n建议文案",
+    "\n建议改为",
+    "\n生成建议",
+    "\n推荐上线版本",
+    "\n可上线",
+    "\nCTA 变体",
+    "\n主标题",
   ];
 
   const positions = markers
