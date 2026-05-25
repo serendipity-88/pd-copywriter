@@ -4,6 +4,8 @@ This directory collects human-readable cases for Chinese product microcopy.
 
 Cases are not prompts. They are small pieces of product judgment: what appeared in the interface, why it worked or failed, what could be changed, and what a PM should learn from it.
 
+Public cases are curated examples, not the complete private case library. Preference-heavy drafts, raw observations, and not-yet-abstracted examples should stay in the local `my skills` workspace until they have been cleaned into transferable product-copy patterns.
+
 ## Directory Plan
 
 ```text

@@ -9,6 +9,11 @@ The goal is not to judge whether a rewrite is the only correct answer. The goal 
 - `golden-v0.jsonl`: 30 baseline cases covering diagnosis, rewrite, generation, page mode, ethics, UI/MKT/EXP, mobile and web/B-side scenarios.
 - `candidates.jsonl`: case-derived eval candidates that are not release gates yet.
 - `schema.json`: JSON schema for each eval case.
+- `outputs.example.jsonl`: minimal example of the output format accepted by the scoring helper.
+
+Representative public evaluation reports live in `docs/eval-reports/`.
+
+Raw model transcripts, run-specific output JSONL files, and temporary comparison artifacts are not kept in the public repository by default. Keep those in a local archive unless they have been intentionally curated into a public report.
 
 ## Validate Files
 

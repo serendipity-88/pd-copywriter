@@ -32,13 +32,7 @@ Two GPT-5.5 runs were compared:
 - Skill-guided: GPT-5.5 was asked to read `skill/SKILL.md` and run the cases with PD Copywriter.
 - Prompt-only baseline: GPT-5.5 received the same case prompts and contexts, but no Skill files or repository context.
 
-Artifacts:
-
-- Cases: `core-regression-10-2026-05-25.cases.jsonl`
-- Skill raw: `core-regression-10-2026-05-25.skill.raw.md`
-- Skill JSONL: `core-regression-10-2026-05-25.skill.outputs.jsonl`
-- GPT-5.5 raw: `core-regression-10-2026-05-25.gpt55-promptonly.raw.md`
-- GPT-5.5 JSONL: `core-regression-10-2026-05-25.gpt55-promptonly.outputs.jsonl`
+Raw run artifacts are archived locally, not kept in the public repository. The public repo keeps this summarized report so users can understand the evaluation method and result without reading transient model transcripts.
 
 ## Score Summary
 

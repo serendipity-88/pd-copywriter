@@ -50,20 +50,20 @@ These are useful, but should be reviewed for public-readiness and possible simpl
 | `evals/candidates.jsonl` | Keep only if candidates are intentionally public staging examples. Otherwise move to local archive and keep a smaller `evals/candidates.example.jsonl`. |
 | `evals/baselines/candidates-manual-2026-05-25.md` | Convert into a short public summary or move to local archive. |
 
-### Convert To Public Summary
+### Converted To Public Summary
 
-These reports are useful as evidence, but should not remain as a growing pile of run artifacts.
+These reports were useful as evidence, but should not remain as a growing pile of run artifacts.
 
 | Path | Recommended public form |
 | --- | --- |
-| `evals/runs/core-regression-10-2026-05-25.report.md` | Keep or move to `docs/eval-reports/core-regression-10.md` as a representative report. |
-| `evals/runs/factual-credibility-3-2026-05-25.report.md` | Keep or move to `docs/eval-reports/factual-credibility.md` as a focused report. |
-| `evals/runs/human-side-by-side-2026-05-25.report.md` | Condense into the core regression report or archive locally. |
-| `evals/runs/gpt55-baseline-comparison-2026-05-25.report.md` | Condense into the core regression report or archive locally. |
-| `evals/runs/manual-10-2026-05-25.report.md` | Condense into the core regression report or archive locally. |
-| `evals/runs/final-copy-comparison-2026-05-25.md` | Archive locally by default; too process-heavy for public repo. |
+| `docs/eval-reports/core-regression-10.md` | Representative report retained publicly. |
+| `docs/eval-reports/factual-credibility.md` | Focused factual-credibility report retained publicly. |
+| Former `evals/runs/human-side-by-side-2026-05-25.report.md` | Archived locally. |
+| Former `evals/runs/gpt55-baseline-comparison-2026-05-25.report.md` | Archived locally. |
+| Former `evals/runs/manual-10-2026-05-25.report.md` | Archived locally. |
+| Former `evals/runs/final-copy-comparison-2026-05-25.md` | Archived locally. |
 
-### Move To Local Archive By Default
+### Moved To Local Archive By Default
 
 These files are process artifacts. They are useful for us, but not necessary for the public repository.
 
@@ -73,6 +73,12 @@ These files are process artifacts. They are useful for us, but not necessary for
 | `evals/runs/*.outputs.jsonl` | Useful for internal comparison, but noisy for external readers. |
 | `evals/runs/*.cases.jsonl` | Run-specific subsets duplicate canonical eval files. Keep only if tied to a representative public report. |
 | Repeated baseline run files | They make the repo look like a workbench rather than a polished Skill project. |
+
+The 2026-05-25 run artifacts were archived locally at:
+
+```text
+my skills/archives/pd-copywriter/eval-runs/2026-05-25/
+```
 
 ## Proposed Public Structure
 
@@ -126,17 +132,17 @@ Local archive can keep:
 - User-provided negative examples before abstraction.
 - Temporary runs used to make a decision.
 
-## Recommended Next Commit
+## Cleanup Completed
 
-Next cleanup should be a separate commit with no Skill behavior change:
+The first cleanup was completed as a documentation and repository-curation change with no Skill behavior change:
 
-1. Create local archive directories under `my skills/archives/pd-copywriter/`.
-2. Move `evals/runs/*.raw.md`, most `*.outputs.jsonl`, and process-heavy reports into the local archive.
-3. Keep two representative public reports, preferably under `docs/eval-reports/`.
-4. Update `evals/README.md` so contributors understand which eval artifacts are public and which are local.
-5. Re-run validation scripts.
+1. Created local archive directories under `my skills/archives/pd-copywriter/`.
+2. Archived `evals/runs/*.raw.md`, `*.outputs.jsonl`, run-specific cases, and process-heavy reports locally.
+3. Kept two representative public reports under `docs/eval-reports/`.
+4. Updated eval documentation so contributors understand which artifacts are public and which are local.
+5. Re-ran validation scripts.
 
-Suggested commit:
+Commit:
 
 ```text
 docs: curate public eval artifacts

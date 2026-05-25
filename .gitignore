@@ -4,3 +4,6 @@ research/
 iterations/
 CLAUDE.md
 TODO.md
+
+# Local eval runs can be noisy; publish curated reports instead.
+evals/runs/

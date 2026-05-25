@@ -17,10 +17,9 @@ The comparison uses three new candidate cases:
 
 ## Method
 
-Two outputs were compared:
+Two outputs were compared: a Skill-guided run and a GPT-5.5 prompt-only baseline.
 
-- Skill-guided run: `factual-credibility-3-2026-05-25.skill.outputs.jsonl`
-- GPT-5.5 prompt-only baseline: `factual-credibility-3-2026-05-25.gpt55-promptonly.outputs.jsonl`
+Raw run artifacts are archived locally, not kept in the public repository. The public repo keeps this summarized report so users can understand the evaluation method and result without reading transient model transcripts.
 
 The automatic scorer is conservative and pattern-based. It is useful for catching missing required phrases and forbidden phrases in rewrite regions, but it can over-flag diagnostic quotations or spacing differences. Human notes are therefore included for this mini run.
 
