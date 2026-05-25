@@ -44,7 +44,9 @@ function readJsonl(file) {
 }
 
 function normalizeText(text) {
-  return String(text ?? "").toLowerCase();
+  return String(text ?? "")
+    .toLowerCase()
+    .replace(/\s+/g, "");
 }
 
 function includesNeedle(output, needle) {
@@ -73,9 +75,80 @@ function rewriteRegion(output) {
   return text.slice(Math.min(...positions));
 }
 
+function isExplanatoryHeading(line) {
+  return /^#{1,6}\s*(诊断|问题|说明|推荐说明|建议|推荐建议|注意|风险|上线前确认|确认项|口径|评估)/.test(line.trim());
+}
+
+function filterExplanatoryMarkdownSections(text) {
+  const lines = String(text ?? "").split(/\n/);
+  let keep = true;
+
+  return lines
+    .filter((line) => {
+      if (/^#{1,6}\s+/.test(line.trim())) {
+        keep = !isExplanatoryHeading(line);
+      }
+
+      return keep;
+    })
+    .join("\n");
+}
+
+function removeExplanatoryLines(text) {
+  return String(text ?? "")
+    .split(/\n/)
+    .filter((line) => {
+      const trimmed = line.trim();
+
+      if (!trimmed) {
+        return true;
+      }
+
+      return ![
+        /^诊断[:：]/,
+        /^建议[:：]/,
+        /^推荐说明[:：]/,
+        /^说明[:：]/,
+        /^由于/,
+        /^当前/,
+        /^如果[^：:]*[:：]$/,
+        /^只有在/,
+        /^否则/,
+        /^避免/,
+      ].some((pattern) => pattern.test(trimmed));
+    })
+    .join("\n");
+}
+
+function candidateCopyRegion(output) {
+  return removeExplanatoryLines(filterExplanatoryMarkdownSections(rewriteRegion(output)));
+}
+
+function factualSignals(testCase, output) {
+  const tags = new Set(testCase.risk_tags ?? []);
+  const shouldCheck = tags.has("factual_claims") || tags.has("sample_copy");
+
+  if (!shouldCheck) {
+    return null;
+  }
+
+  return {
+    launch_sample_split: includesNeedle(output, "可上线文案") && includesNeedle(output, "示例文案"),
+    sample_disclaimer:
+      includesNeedle(output, "示例数字仅示意") ||
+      includesNeedle(output, "仅示意") ||
+      includesNeedle(output, "需替换为真实数据"),
+    verification_prompt:
+      includesNeedle(output, "上线前确认") ||
+      includesNeedle(output, "口径") ||
+      includesNeedle(output, "样本量") ||
+      includesNeedle(output, "赔付"),
+  };
+}
+
 function scoreCase(testCase, outputItem) {
   const output = outputItem?.output ?? "";
-  const rewrittenOutput = rewriteRegion(output);
+  const rewrittenOutput = candidateCopyRegion(output);
   const missing = [];
   const forbidden = [];
 
@@ -97,6 +170,7 @@ function scoreCase(testCase, outputItem) {
     auto_pass: missing.length === 0 && forbidden.length === 0,
     missing,
     forbidden,
+    factual_signals: factualSignals(testCase, output),
     human_score: outputItem?.human_score ?? null,
     review_notes: outputItem?.review_notes ?? "",
   };
@@ -136,6 +210,12 @@ function main() {
     }
     if (result.forbidden.length > 0) {
       console.log(`  forbidden: ${result.forbidden.join(" | ")}`);
+    }
+    if (result.factual_signals) {
+      const signals = Object.entries(result.factual_signals)
+        .map(([key, value]) => `${key}=${value ? "yes" : "no"}`)
+        .join(", ");
+      console.log(`  factual_signals: ${signals}`);
     }
     if (result.human_score !== null) {
       console.log(`  human_score: ${result.human_score}`);

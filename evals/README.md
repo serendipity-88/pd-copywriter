@@ -41,7 +41,14 @@ Then run:
 node scripts/score-eval-outputs.mjs --evals evals/candidates.jsonl --outputs evals/outputs.example.jsonl
 ```
 
-This script checks `must_include` and `must_not_include` automatically. `must_not_include` is checked against the rewrite/suggestion section when one is detected, so diagnosis can still quote the original bad copy. It does not replace human review for `expected_findings` or `acceptable_rewrite_traits`.
+This script checks `must_include` and `must_not_include` automatically.
+
+- `must_include` is checked against the full output.
+- `must_not_include` is checked against the candidate-copy region, not diagnosis/explanation sections, so the model can quote the original bad copy while explaining the issue.
+- Chinese spacing is normalized, so `30 分钟` and `30分钟` are treated as the same phrase.
+- Cases tagged with `factual_claims` or `sample_copy` also print lightweight signals for launch/sample separation, sample disclaimers, and verification prompts.
+
+The script does not replace human review for `expected_findings` or `acceptable_rewrite_traits`.
 
 ## How To Run Manually
 

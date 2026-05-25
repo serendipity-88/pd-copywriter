@@ -28,10 +28,10 @@ The automatic scorer is conservative and pattern-based. It is useful for catchin
 
 | Run | Auto-pass | Human assessment |
 | --- | ---: | --- |
-| PD Copywriter Skill | 2/3 | 3/3 pass |
-| GPT-5.5 prompt-only | 0/3 | 1 strong pass, 2 partial passes |
+| PD Copywriter Skill | 3/3 | 3/3 pass |
+| GPT-5.5 prompt-only | 1/3 | 1 strong pass, 2 partial passes |
 
-Important caveat: GPT-5.5 prompt-only scored `0/3` automatically partly because it does not follow the Skill's output sections and quotes original risky phrases in diagnosis. The more meaningful comparison is the human assessment below.
+Important caveat: the scorer is still intentionally lightweight. It now ignores diagnosis/explanation sections for `must_not_include` checks and normalizes Chinese spacing, which makes it closer to human review than the first scorer version.
 
 ## Case Findings
 
@@ -98,12 +98,12 @@ The Skill's real improvement is making the expert behavior stable:
 
 This is the right direction for PD Copywriter: the Skill should not lower the model's creative ceiling. It should make strong product-copy judgment repeatable, auditable, and safer to apply in real UI work.
 
-## Next Optimization
+## Scorer Follow-up
 
-The next high-leverage improvement is to make the eval scorer less format-sensitive:
+The scorer was updated after this run to reduce two observed false positives:
 
 - Treat diagnosis quotations differently from final rewrite content.
 - Normalize spacing such as `30分钟` and `30 分钟`.
-- Add explicit scoring dimensions for "sample-vs-launch separation" instead of relying only on required phrases.
+- Print lightweight factual signals for "sample-vs-launch separation" instead of relying only on required phrases.
 
-This will make future comparisons against strong baseline models fairer and more useful.
+Future work: add explicit scored dimensions for sample-vs-launch separation once we have more manually reviewed cases.
