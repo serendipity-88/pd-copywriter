@@ -96,3 +96,16 @@ For simple tasks, stay concise. For complex tasks, structure the response.
 Each committed change should leave the project in a coherent, usable state.
 
 Small, tested, explainable commits are preferred over large architectural rewrites.
+
+### 11. Keep The Public Repository Curated
+
+The GitHub repository is the public product surface for the Skill. It should help users understand, install, use, and contribute to PD Copywriter. It should not become a full backup of every intermediate working artifact.
+
+Public case and eval materials should be curated:
+
+- Keep cleaned, generalized cases that explain quality standards and repeatable evaluation methods.
+- Avoid publishing every raw run, temporary comparison, or long process log.
+- Keep subjective, preference-heavy, or not-yet-abstracted case material in the local `my skills` workspace first.
+- Publish representative reports only when they help users understand the Skill's value, boundary, or contribution workflow.
+
+The purpose of public cases is to show the method and quality bar, not to expose the entire workshop floor.
