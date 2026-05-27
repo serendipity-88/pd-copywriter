@@ -107,7 +107,7 @@ cp -r skill/* ~/.claude/skills/pd-copywriter/
 ### 3. 生成新文案
 
 ```text
-TapNow 是一个 AI 视频生成工具。
+CC 是一个 AI 视频生成工具。
 请用 PD Copywriter 帮我写首页 CTA。
 ```
 
